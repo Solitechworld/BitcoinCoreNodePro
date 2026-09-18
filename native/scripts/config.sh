@@ -72,6 +72,17 @@ deps_prefix() { echo "${BUILD_DIR}/$1/deps"; }
 # ---------------------------------------------------------------------------
 # Toolchain discovery
 # ---------------------------------------------------------------------------
+# Where Android Studio puts the SDK when nobody has overridden it. The path
+# differs per OS and getting it wrong sends find_ndk down a dead end on a
+# machine that has a perfectly good NDK installed.
+default_sdk_dir() {
+  case "$(uname -s)" in
+    Darwin) echo "$HOME/Library/Android/sdk" ;;
+    Linux)  echo "$HOME/Android/Sdk" ;;
+    *)      echo "$HOME/Android/Sdk" ;;
+  esac
+}
+
 find_ndk() {
   if [[ -n "${ANDROID_NDK_HOME:-}" && -f "${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake" ]]; then
     echo "${ANDROID_NDK_HOME}"; return
@@ -79,7 +90,7 @@ find_ndk() {
   if [[ -n "${ANDROID_NDK_ROOT:-}" && -f "${ANDROID_NDK_ROOT}/build/cmake/android.toolchain.cmake" ]]; then
     echo "${ANDROID_NDK_ROOT}"; return
   fi
-  local sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Library/Android/sdk}}"
+  local sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$(default_sdk_dir)}}"
   if [[ -d "${sdk}/ndk" ]]; then
     # Highest installed NDK wins.
     local best
@@ -102,7 +113,8 @@ pick r27 or newer -- r27 is the first release that handles 16 KB pages properly)
 or set one of these and re-run:
 
     export ANDROID_NDK_HOME=/path/to/ndk/27.2.12479018
-    export ANDROID_HOME=$HOME/Library/Android/sdk
+    export ANDROID_HOME=$HOME/Library/Android/sdk   # macOS
+    export ANDROID_HOME=$HOME/Android/Sdk           # Linux / WSL
 MSG
     exit 1
   fi
@@ -122,7 +134,16 @@ host_tag() {
     Darwin) echo "darwin-x86_64" ;;   # correct on Apple Silicon too; the NDK
                                       # ships a universal/rosetta-capable set
     Linux)  echo "linux-x86_64" ;;
-    *)      echo "unsupported" ;;
+    *)
+      # MSYS2/Git-Bash/Cygwin land here. The NDK does ship a windows-x86_64
+      # toolchain, but these scripts assume POSIX paths, symlinks and GNU
+      # autotools throughout, and Core's own depends system does not support a
+      # Windows host either. WSL2 is the supported route -- see
+      # docs/09-BUILD-WINDOWS.md.
+      echo "ERROR: unsupported build host '$(uname -s)'." >&2
+      echo "       On Windows, build inside WSL2. See docs/09-BUILD-WINDOWS.md." >&2
+      exit 1
+      ;;
   esac
 }
 

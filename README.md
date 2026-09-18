@@ -97,6 +97,11 @@ Full detail, including why the build paths must be space-free: **`docs/02-BUILD-
 ./gradlew assembleDebug
 ```
 
+Per-host setup: **`docs/08-BUILD-LINUX.md`**, **`docs/09-BUILD-WINDOWS.md`**,
+and `BUILD-ON-YOUR-MAC.md` for macOS. On Windows the app builds natively with
+`gradlew.bat`; only the Core cross-compile needs WSL2, and the Windows guide
+explains why.
+
 A release build refuses to start if the native payload is missing, rather than
 producing an APK with no node in it.
 
@@ -113,6 +118,8 @@ producing an APK with no node in it.
 | `docs/05-USER-MANUAL.md` | For the person holding the phone |
 | `docs/06-PLAY-RELEASE.md` | Signing, Data Safety, store listing, the release runbook |
 | `docs/07-IOS-PORT.md` | What ports cleanly, and the one thing that does not |
+| `docs/08-BUILD-LINUX.md` | Building on Linux — packages, SDK/NDK, devices over udev |
+| `docs/09-BUILD-WINDOWS.md` | Building on Windows — the app natively, the node in WSL2 |
 
 ---
 

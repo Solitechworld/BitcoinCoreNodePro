@@ -135,6 +135,9 @@ producing an APK with no node in it.
 
 ## Funding
 
+
+[<img src="docs/assets/donate.svg" alt="Donate Bitcoin — 1Be6LLAEndprdWKiH6YM62setFQRXJzfha" width="440">](https://mempool.space/address/1Be6LLAEndprdWKiH6YM62setFQRXJzfha)
+
 This is built without institutional backing, and it needs serious funding to
 reach where it should go: an audited release, a bundled Tor transport rather
 than a dependency on Orbot, an iOS port, and the sustained maintenance that

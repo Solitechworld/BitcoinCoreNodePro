@@ -1,4 +1,14 @@
-# Bitcoin Core Node
+<img src="docs/assets/banner.svg" alt="Bitcoin Mobile — a full Bitcoin Core node on your phone" width="100%">
+
+<p>
+<img src="https://img.shields.io/badge/Android-9%2B%20(API%2028)-00d9d9?style=flat-square&labelColor=07090f" alt="Android 9+">
+<img src="https://img.shields.io/badge/ABI-arm64--v8a-00d9d9?style=flat-square&labelColor=07090f" alt="arm64-v8a">
+<img src="https://img.shields.io/badge/custody-non--custodial-00c850?style=flat-square&labelColor=07090f" alt="non-custodial">
+<img src="https://img.shields.io/badge/licence-MIT-8b96a8?style=flat-square&labelColor=07090f" alt="MIT licence">
+<a href="https://github.com/Solitechworld/BitcoinCoreNodePro/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/Solitechworld/BitcoinCoreNodePro/build.yml?branch=main&style=flat-square&labelColor=07090f&color=00d9d9&label=build" alt="build"></a>
+</p>
+
+[cnsunzone.com](https://cnsunzone.com) · [Architecture](docs/01-ARCHITECTURE.md) · [Build on Linux](docs/08-BUILD-LINUX.md) · [Build on Windows](docs/09-BUILD-WINDOWS.md) · [Security](docs/04-SECURITY.md)
 
 A full **Bitcoin Core 30.3** node and descriptor wallet for Android, with a
 cyberpunk HUD interface.

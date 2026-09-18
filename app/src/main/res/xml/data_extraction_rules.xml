@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Nothing about this app is backed up, transferred to a new device, or synced
+  to the cloud. Not the wallets, not the chainstate, not the settings.
+
+  This is not laziness. Android's backup mechanisms put data on Google's
+  servers or on an adb-accessible transfer channel, and wallet.dat plus a
+  Keystore-wrapped seed are exactly the things that must never travel that way.
+  Users move funds between devices by restoring from their seed phrase, which
+  is the mechanism that was designed for it.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </device-transfer>
+</data-extraction-rules>

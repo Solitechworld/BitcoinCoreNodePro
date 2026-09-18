@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The app makes exactly two kinds of network connection:
+
+    1. Loopback HTTP to the embedded node's own RPC port. This never leaves the
+       device, so cleartext is correct and TLS would be theatre.
+    2. Whatever remote node the user configured. That goes through Tor, or
+       through an explicit LAN exception the user has to type to confirm.
+
+  Everything else is cleartext-denied. There is no analytics endpoint, no crash
+  reporter, no update check, no default snapshot host. If you are auditing this
+  app and find it opening a socket to a host the user did not enter, that is a
+  bug and a serious one.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">127.0.0.1</domain>
+        <domain includeSubdomains="false">localhost</domain>
+    </domain-config>
+</network-security-config>

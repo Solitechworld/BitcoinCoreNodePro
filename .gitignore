@@ -1,0 +1,49 @@
+# Android / Gradle
+*.iml
+.gradle/
+.kotlin/
+/local.properties
+/.idea/
+.DS_Store
+# NOT "/build" -- a leading slash anchors to this file's directory, so it would
+# ignore the root build/ and happily commit app/build/, which is ~700 MB and
+# contains a 61 MB mapping.txt and an 84 MB debug APK. GitHub rejects files
+# over 100 MB. Unanchored, this matches build/ at any depth.
+build/
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# NEVER COMMIT THESE.
+#
+# keystore.properties holds the passwords to your release signing key, and
+# *.jks / *.keystore is the key itself. Losing control of that key means
+# someone else can publish an update to your app that Play and every installed
+# device will accept as genuine. Losing the key entirely means you can never
+# update this app again under the same package name -- Play has no recovery
+# path for that; you would have to publish a new listing and ask every user to
+# migrate manually.
+#
+# Back the keystore up somewhere offline. Twice.
+keystore.properties
+*.jks
+*.keystore
+release/
+
+# Built artifacts delivered into the chat sidebar; the .aab is 16 MB and is
+# reproducible from source + the native payload. Keep it out of history.
+"Claude outputs"/
+*.aab
+*.apk
+
+# The advertising integration: implementation and live AdMob identifiers.
+# A clean checkout has neither, compiles app/src/noads/ instead, and pulls in
+# no ad SDK. app/ads.properties.example documents the format.
+app/src/ads/
+app/ads.properties
+
+# Native build output. Rebuilt by native/scripts/build-all.sh; large, and
+# reproducible from source, so it does not belong in git history.
+native/build/
+app/src/main/jniLibs/

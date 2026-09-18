@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bitcoin Mobile</string>
+    <string name="node_channel_name">Bitcoin node</string>
+    <string name="node_channel_description">Status of the Bitcoin Core node running on this device</string>
+</resources>

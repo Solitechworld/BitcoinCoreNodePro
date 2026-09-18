@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cyberspace dark palette for the resource system.
+         Only the values Android needs before Compose is running:
+         the launcher icon and the window background during cold start. -->
+    <color name="bcn_void">#FF0A0E17</color>
+    <color name="bcn_surface">#FF111827</color>
+    <color name="bcn_cyan">#FF00F0FF</color>
+    <color name="ic_launcher_background">#FF0B0E17</color>
+</resources>

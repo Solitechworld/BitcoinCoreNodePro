@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The chosen brand artwork, full-bleed: dark field with the cyan bitcoin
+     glyph. Edges are empty dark pixels, so any adaptive mask crop is
+     invisible; the glyph sits well inside the safe zone. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@mipmap/ic_brand_foreground"
+    android:inset="8%" />

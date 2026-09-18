@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      The XML theme only has to survive the moment between process start and
+      Compose taking over. The app is now dark (cyberspace), so this uses
+      the void colour as the window background to prevent the white flash.
+    -->
+    <style name="Theme.BitcoinCoreNode" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/bcn_void</item>
+        <item name="android:colorBackground">@color/bcn_void</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="29">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="Theme.BitcoinCoreNode.Splash" parent="Theme.BitcoinCoreNode">
+        <item name="android:windowSplashScreenBackground" tools:targetApi="31">@color/bcn_void</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="31">@drawable/ic_launcher_foreground</item>
+    </style>
+</resources>

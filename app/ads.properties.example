@@ -1,0 +1,9 @@
+# Copy to app/ads.properties to build with the advertising integration.
+#
+# Both this file and app/src/ads/ must be present for ads to be compiled in;
+# without them the build uses app/src/noads/ and ships no ad SDK at all.
+#
+# admobAppId is the AdMob *application* id -- the tilde form, from
+# AdMob -> Apps -> App settings. The banner *ad unit* id (the slash form)
+# belongs in app/src/ads/java/com/solitech/bitcoincorenode/ads/Ads.kt.
+admobAppId=ca-app-pub-0000000000000000~0000000000

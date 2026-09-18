@@ -22,6 +22,35 @@ against either.
 
 ---
 
+## The constraints that shaped this
+
+The interesting problems were not in the UI.
+
+**Android does not let you `exec()` from just anywhere.** The only directory
+permitted is `nativeLibraryDir`, and the installer only writes a real file there
+when the APK uses legacy (compressed) JNI packaging. So the Core binary ships as
+a position-independent executable named `libbitcoind.so`, with
+`extractNativeLibs=true` deliberately held on — the setting a well-meaning
+"optimisation" removes, after which the node silently cannot start.
+
+**16 KB memory pages.** Play requires 64-bit native code to support them, and a
+misaligned binary does not fail gracefully — it does not load at all. Every
+`PT_LOAD` segment is checked for `p_align = 0x4000` at packaging time, and
+`native/scripts/30-package-jnilibs.sh` refuses to produce a build that fails.
+
+**API 28 is a floor set by the node, not the UI.** Core's `random.cpp` wants
+`getrandom()`/`getentropy()`, which bionic only exposes from Android 9.
+
+**`arm64-v8a` only.** A 32-bit address space is a poor fit for a UTXO cache, and
+Play has required 64-bit since 2019.
+
+Non-custodial throughout: keys never leave the device, there is no service, no
+counterparty and no order book. PSBT, RBF, coin control, and a biometric gate
+before signing. File access goes through the Storage Access Framework rather
+than asking for `MANAGE_EXTERNAL_STORAGE`.
+
+---
+
 ## Status
 
 | Area | State |
@@ -38,10 +67,10 @@ against either.
 | Play release pipeline | Scaffolded — see `docs/06-PLAY-RELEASE.md` |
 | iOS | Planned — see `docs/07-IOS-PORT.md` |
 
-**Nothing here has been compiled yet.** It was written without an Android SDK
-available. Expect the first build to surface import and signature fixes; the
-architecture and the Core integration are the parts that were worth getting
-right up front.
+It builds. CI runs lint, the unit tests and a full `assembleDebug` on every push
+to `main`. A signed release bundle has been produced and verified: signature,
+16 KB alignment on every native segment, and `extractNativeLibs=true` intact in
+the merged manifest.
 
 ---
 
@@ -84,6 +113,34 @@ producing an APK with no node in it.
 | `docs/05-USER-MANUAL.md` | For the person holding the phone |
 | `docs/06-PLAY-RELEASE.md` | Signing, Data Safety, store listing, the release runbook |
 | `docs/07-IOS-PORT.md` | What ports cleanly, and the one thing that does not |
+
+---
+
+## Funding
+
+This is built without institutional backing, and it needs serious funding to
+reach where it should go: an audited release, a bundled Tor transport rather
+than a dependency on Orbot, an iOS port, and the sustained maintenance that
+follows every Bitcoin Core upgrade.
+
+Running a real node should not require a desktop, a static IP or a spare
+machine. Putting one in everyone's pocket changes who gets to verify the chain
+for themselves rather than trusting someone who has. That is the bet — an
+ambition being worked toward, not a promise. Nothing here is an investment offer
+and no return of any kind is implied.
+
+To support the work directly:
+
+```
+bitcoin:1Be6LLAEndprdWKiH6YM62setFQRXJzfha
+```
+
+`1Be6LLAEndprdWKiH6YM62setFQRXJzfha` — mainnet P2PKH. The same address is
+compiled into the app as `Donation.ADDRESS` and covered by a checksum test in
+CI. Verify the first and last four characters before sending anything.
+
+For sponsorship, contract work, or a serious conversation about backing the
+project, open an issue.
 
 ---
 

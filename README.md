@@ -73,31 +73,6 @@ producing an APK with no node in it.
 
 ---
 
-## Verify the work rather than trusting it
-
-Two scripts exist because "the field names match Core" and "the imports are
-right" are claims, and claims should be checkable:
-
-```bash
-# Diffs every Kotlin RPC model against Bitcoin Core's own RPCResult declarations
-python3 native/scripts/verify-rpc-models.py --core "$BITCOIN_SRC"
-
-# Diffs the Blockbook models against a LIVE explorer. Run this before trusting
-# the explorer fallback -- unlike the Core models, these were written from a
-# documented schema rather than from source, and have not been checked.
-python3 native/scripts/verify-blockbook-schema.py \
-    --url https://bitcoin.atomicwallet.io/api/v2 \
-    --address 1Be6LLAEndprdWKiH6YM62setFQRXJzfha
-
-# Flags identifiers used without an import (a compiler stand-in, not a compiler)
-python3 native/scripts/check-kotlin-imports.py app/src/main/java
-```
-
-Run the first one after **every** Core upgrade. It is how you find out that a
-field was renamed before your users find out that a balance reads zero.
-
----
-
 ## Documentation
 
 | | |

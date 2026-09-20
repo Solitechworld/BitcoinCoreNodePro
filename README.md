@@ -32,35 +32,6 @@ against either.
 
 ---
 
-## The constraints that shaped this
-
-The interesting problems were not in the UI.
-
-**Android does not let you `exec()` from just anywhere.** The only directory
-permitted is `nativeLibraryDir`, and the installer only writes a real file there
-when the APK uses legacy (compressed) JNI packaging. So the Core binary ships as
-a position-independent executable named `libbitcoind.so`, with
-`extractNativeLibs=true` deliberately held on — the setting a well-meaning
-"optimisation" removes, after which the node silently cannot start.
-
-**16 KB memory pages.** Play requires 64-bit native code to support them, and a
-misaligned binary does not fail gracefully — it does not load at all. Every
-`PT_LOAD` segment is checked for `p_align = 0x4000` at packaging time, and
-`native/scripts/30-package-jnilibs.sh` refuses to produce a build that fails.
-
-**API 28 is a floor set by the node, not the UI.** Core's `random.cpp` wants
-`getrandom()`/`getentropy()`, which bionic only exposes from Android 9.
-
-**`arm64-v8a` only.** A 32-bit address space is a poor fit for a UTXO cache, and
-Play has required 64-bit since 2019.
-
-Non-custodial throughout: keys never leave the device, there is no service, no
-counterparty and no order book. PSBT, RBF, coin control, and a biometric gate
-before signing. File access goes through the Storage Access Framework rather
-than asking for `MANAGE_EXTERNAL_STORAGE`.
-
----
-
 ## Status
 
 | Area | State |

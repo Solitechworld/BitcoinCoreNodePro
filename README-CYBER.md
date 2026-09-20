@@ -1,19 +1,7 @@
-# Bitcoin Core Node — Cyberspace Edition
+# Bitcoin Core Node
 
 A full Bitcoin Core node for Android, redesigned with a cyberspace/cyberpunk aesthetic:
 dark void background, neon glowing borders, scanlines, blueprint grid, and bubble-style UI.
-
-## What Changed from the Original
-
-### 🎨 Cyberspace Visual Redesign
-- **Dark void theme**: Deep space black (`#0A0E17`) background with neon accents
-- **Neon glow borders**: Real multi-layered glow on panels, buttons, and chips
-- **Scanlines & grid**: Subtle CRT scanlines and blueprint grid overlay
-- **Vignette**: Edge darkening for a cockpit/CRT feel
-- **Bubble panels**: Generously rounded cards (24dp radius) with glass-like surface
-- **Bubble buttons**: Pill-shaped buttons with neon accent borders and glow
-- **Uppercase HUD labels**: Wide-tracked uppercase section headers
-- **Neon status indicators**: Pulsing cyan/green/amber/red dots and chips
 
 ### 🔒 Circle Passcode (6-digit)
 - **Circle dot input**: 6 filled/empty circles that animate as digits are entered

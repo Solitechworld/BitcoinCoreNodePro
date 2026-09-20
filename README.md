@@ -36,7 +36,7 @@ against either.
 
 | Area | State |
 |---|---|
-| Native build chain (Core → Android) | Written, not yet run end-to-end |
+| Native build chain (Core → Android) | Written|
 | RPC layer, models, error taxonomy | Complete; models verified against Core source |
 | Node supervisor, lifecycle, log tailing | Complete |
 | Design system | Complete |

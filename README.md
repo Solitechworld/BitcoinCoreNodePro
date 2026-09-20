@@ -64,8 +64,8 @@ Two steps, in order.
 ```bash
 cd native/scripts
 export BCN_BUILD_DIR="$HOME/bcn-build"
-export BITCOIN_SRC="$HOME/bitcoin-30.3"          # extracted bitcoin-30.3.zip
-export ANDROID_NDK_HOME="$HOME/Library/Android/sdk/ndk/27.2.12479018"
+export BITCOIN_SRC="$HOME/bitcoin-30.3"          
+export ANDROID_NDK_HOME="$HOME/Library/Android/sdk/ndk/......."
 ./build-all.sh
 ```
 

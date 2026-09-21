@@ -23,5 +23,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BitcoinCoreNode"
+rootProject.name = "BitcoinMobile"
 include(":app")

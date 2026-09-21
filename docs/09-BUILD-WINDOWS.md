@@ -56,7 +56,7 @@ Then:
 Two Windows-specific notes:
 
 - **Long paths.** Kotlin, KSP and R8 generate deeply nested output and can pass
-  260 characters. Keep the checkout near the root — `C:\dev\BitcoinCoreNodePro`,
+  260 characters. Keep the checkout near the root — `C:\dev\BitcoinMobile`,
   not `C:\Users\Name\Documents\Projects\...` — and enable long paths:
   ```powershell
   # elevated PowerShell
@@ -92,8 +92,8 @@ there. It is the single biggest performance mistake in a WSL setup.
 
 ```bash
 cd ~                                   # NOT /mnt/c/Users/...
-git clone <your-repo-url> BitcoinCoreNodePro
-cd BitcoinCoreNodePro
+git clone <your-repo-url> BitcoinMobile
+cd BitcoinMobile
 ```
 
 You can still edit the files from Windows — `\\wsl$\Ubuntu-24.04\home\you\...`
@@ -129,8 +129,8 @@ WSL. Copy the four files across:
 
 ```bash
 # from WSL
-cp -r ~/BitcoinCoreNodePro/app/src/main/jniLibs \
-      /mnt/c/dev/BitcoinCoreNodePro/app/src/main/
+cp -r ~/BitcoinMobile/app/src/main/jniLibs \
+      /mnt/c/dev/BitcoinMobile/app/src/main/
 ```
 
 Copy `BUILD-INFO-arm64-v8a.txt` with them — it records the NDK version, the Core

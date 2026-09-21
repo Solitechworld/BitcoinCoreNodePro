@@ -10,8 +10,7 @@
 
 [cnsunzone.com](https://cnsunzone.com) · [Architecture](docs/01-ARCHITECTURE.md) · [Build on Linux](docs/08-BUILD-LINUX.md) · [Build on Windows](docs/09-BUILD-WINDOWS.md) · [Security](docs/04-SECURITY.md)
 
-A full **Bitcoin Core 30.3** node and descriptor wallet for Android, with a
-cyberpunk HUD interface.
+A full **Bitcoin Core 30.3** node and descriptor wallet for Android.
 
 Not a light client. Not an SPV wallet. Not a front end to somebody else's
 server. The actual `bitcoind` binary, cross-compiled for arm64, running as a

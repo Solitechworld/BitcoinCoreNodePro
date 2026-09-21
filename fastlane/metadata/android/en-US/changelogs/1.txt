@@ -1,7 +1,0 @@
-First release.
-
-• Bitcoin Core 30.3 running as a full node on device
-• Fast sync from a UTXO snapshot (assumeutxo), with background validation
-• Descriptor wallet: send, receive, coin control, RBF, PSBT
-• Peers, mempool, fee estimates and a full RPC console
-• Optional connection to your own remote node over Tor
